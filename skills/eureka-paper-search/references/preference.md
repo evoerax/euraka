@@ -11,7 +11,7 @@ output_target:
   # Obsidian configuration
   obsidian:
     vault_path: "/Users/leon/files/Agent-Vault"
-    directory: "10_Daily"
+    directory: "paper_daily"
   
   # Markdown configuration (alternative)
   markdown:
@@ -108,10 +108,9 @@ scoring:
 
 ## Output Configuration
 output:
-  directory: "10_Daily"
+  directory: "paper_daily"
   filename_format: "yyyy-mm-dd_paper_{topic}"
   include_abstract: true
-  include_images: true
   include_pseudo_code: true
   generate_detailed_report: true
   top_n_for_detailed: 3

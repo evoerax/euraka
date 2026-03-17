@@ -1,6 +1,8 @@
 # Eureka
 
-![Eureka](./assets/image.png)
+[English](./README.md) | [中文](./README_cn.md)
+
+![Eureka](./assets/logo.jpg)
 
 > 学术论文研究工作流工具
 
@@ -30,10 +32,14 @@
 从论文数据生成美观的 HTML 汇报。
 
 - **功能**:
-  - 极简瑞士风格设计
+  - 两种设计模板：简约（白色）& 赛博（暗黑）
   - 响应式布局
-  - 暗色模式支持
+  - 动画效果（赛博风格）
   - 无障碍优化
+
+- **模板**:
+  - `minimal.html` - 简约瑞士风格
+  - `cyberpunk.html` - 暗黑模式带渐变和动画
 
 - **用法**:
   ```
@@ -60,11 +66,18 @@ cp -r skills/eureka-paper-html ~/.claude/skills/
 
 ## 设计系统
 
-eureka-paper-html 使用：
+eureka-paper-html 在 `references/templates/` 提供两个模板：
 
-- **字体**: Inter（正文）、JetBrains Mono（代码）
-- **配色**: #2563EB（主色）、#3B82F6（次色）、#F97316（CTA）
-- **风格**: 极简瑞士风格
+| 模板 | 描述 | 文件 |
+|------|------|------|
+| **minimal** | 简洁白色背景，瑞士风格 | `minimal.html` |
+| **cyberpunk** | 暗黑模式，带渐变效果和动画 | `cyberpunk.html` |
+
+两个模板都生成包含以下内容的报告：
+- 概览：总体趋势、研究热点
+- 论文列表：作者、链接、标签、摘要、核心贡献
+
+**默认**：简约风格
 
 ## 许可证
 

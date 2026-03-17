@@ -15,7 +15,7 @@ eureka-paper-search is an independent skill for searching academic papers from m
 
 ### 1. Research Interests
 
-Edit `references/preference.md` to configure your research interests:
+Create and edit `~/.eureka/preference.md` to configure your research interests:
 
 ```yaml
 # Language setting
@@ -39,7 +39,7 @@ output_target:
   type: "obsidian"  # or "markdown"
   obsidian:
     vault_path: "/path/to/vault"
-    directory: "10_Daily"
+    directory: "paper_daily"
 ```
 
 ### 3. Feature Configuration
@@ -102,33 +102,90 @@ When enabled, extracts images from papers:
 
 When enabled, extracts pseudo-code from papers:
 
-- **Algorithm descriptions**: Extracts algorithm steps
+- **Algorithm descriptions**: Extracts algorithm steps from paper text
 - **Mathematical formulas**: Renders equations in pseudo-code format
 - **Output**: Includes pseudo-code in generated notes
+
+#### Configuration Options
+
+```yaml
+pseudo_code:
+  enabled: true              # Enable/disable pseudo-code extraction
+  top_n: 3                  # Generate pseudo-code for top N papers
+  include_algorithms: true  # Include algorithm descriptions
+  include_math: true        # Include mathematical formulas
+```
+
+#### How It Works
+
+1. **Paper Content Analysis**: Parse paper text to identify algorithm sections
+2. **Algorithm Extraction**: Extract key algorithm steps and pseudo-code blocks
+3. **Math Rendering**: Convert LaTeX formulas to readable pseudo-code
+4. **Output**: Embed pseudo-code in the paper notes under "Pseudo-code" section
+
+#### Output Format
+
+```markdown
+### Paper Title
+- **Authors**: ...
+- **Abstract**: ...
+
+#### Pseudo-code
+```
+# Algorithm Name
+Input: ...
+Output: ...
+
+1. Step one description
+2. Step two description
+3. Step three description
+```
+
+# Mathematical Formulas
+- Formula 1: description
+- Formula 2: description
+```
+
+#### Notes
+
+- Pseudo-code generation is computationally intensive, use `top_n` to limit
+- Works best with papers that have clear algorithm descriptions
+- Falls back gracefully if paper doesn't contain extractable algorithms
 
 ## Output
 
 Generates file: `{yyyy-mm-dd}_paper_{topic}.md`
 
 ```markdown
-# 2026-03-17_paper_llm_agent
+# yyyy-mm-dd_paper_{topic}
 
 ## Overview
-- **Trend**: ...
-- **Hotspots**: ...
+- **Overall Trend**: {summary of overall research trend}
+- **Research Hotspots**:
+  - **Hotspot 1**: brief description
+  - **Hotspot 2**: brief description
+  - **Hotspot 3**: brief description
 
 ## Paper List
-### Title
-- **Authors**: ...
-- **Links**: PDF | arXiv
-- **Abstract**: ...
+### Paper Title
+- **Authors**: author list
+- **Links**: [PDF](url) | [Code](url) | [DOI](url)
+- **Tags**: #Tag1 #Tag2
+- **Abstract**: abstract content
+- **Core Contributions**:
+  - contribution point 1
+  - contribution point 2
+- **Pseudo-code** (optional):
+  ```
+  # Algorithm Name
+  Input: ...
+  Output: ...
+  1. Step one
+  2. Step two
+  ```
 
-### Pseudo-code
-```python
-# Algorithm pseudo-code
-def algorithm():
-    step1()
-    step2()
+### Another Paper
+...
 ```
 
 ---
